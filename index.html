@@ -3,72 +3,664 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>나의 첫 웹페이지</title>
+  <title>Hanbit Global | 회사 소개</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f5f6f8;
-      color: #222;
+      padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: #f6f8fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Header */
     header {
-      background: #1f2937;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
     }
 
-    button {
-      background: #2563eb;
-      color: white;
+    .logo span {
+      color: #2563eb;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .mobile-menu-button {
+      display: none;
       border: none;
-      padding: 12px 18px;
+      background: #eef2ff;
+      color: #1e40af;
+      padding: 8px 12px;
       border-radius: 8px;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    button:hover {
+    /* Hero */
+    .hero {
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.82)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 110px 24px;
+    }
+
+    .hero-content {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(147, 197, 253, 0.45);
+      color: #bfdbfe;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      font-size: 54px;
+      line-height: 1.15;
+      letter-spacing: -1.8px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 18px;
+      color: #dbeafe;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
       background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Common Section */
+    section {
+      padding: 86px 24px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title span {
+      color: #2563eb;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-top: 10px;
+      letter-spacing: -1px;
+      color: #0f172a;
+    }
+
+    .section-title p {
+      margin-top: 12px;
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 30px;
+      color: #0f172a;
+      margin-bottom: 18px;
+      letter-spacing: -0.8px;
+    }
+
+    .about-text p {
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .about-card strong {
+      display: block;
+      font-size: 42px;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .about-card p {
+      color: #475569;
+    }
+
+    /* Services */
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 30px;
+      transition: 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+      border-color: #bfdbfe;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .service-card p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: #0f172a;
+      color: white;
+      border-radius: 18px;
+      padding: 30px 22px;
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 34px;
+      margin-bottom: 8px;
+      color: #93c5fd;
+    }
+
+    .stat-card span {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact {
+      background: #eff6ff;
+    }
+
+    .contact-box {
+      background: white;
+      border-radius: 22px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    .contact-info h3 {
+      font-size: 28px;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+
+    .contact-info p {
+      color: #475569;
+      margin-bottom: 18px;
+    }
+
+    .contact-list li {
+      margin-bottom: 10px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .submit-button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background: #1d4ed8;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-container {
+        padding: 14px 18px;
+        align-items: flex-start;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        margin-top: 14px;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        background: #f8fafc;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 82px 20px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .service-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>나의 첫 웹페이지</h1>
-    <p>AI로 만든 GitHub Pages 웹사이트입니다.</p>
+    <div class="nav-container">
+      <a href="#" class="logo">Hanbit<span>Global</span></a>
+
+      <button class="mobile-menu-button" onclick="toggleMenu()">메뉴</button>
+
+      <nav id="menu">
+        <ul>
+          <li><a href="#about">회사소개</a></li>
+          <li><a href="#services">사업분야</a></li>
+          <li><a href="#stats">성과</a></li>
+          <li><a href="#contact">문의</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="card">
-      <h2>소개</h2>
-      <p>이 페이지는 HTML, CSS, JavaScript로 만든 간단한 웹페이지입니다.</p>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">Global Business Partner</div>
+        <h1>더 나은 성과를 만드는 신뢰 기반 비즈니스 파트너</h1>
+        <p>
+          Hanbit Global은 전략, 실행, 운영 역량을 바탕으로 고객사의 지속 가능한 성장을 지원합니다.
+          시장 변화에 대응하는 실질적인 솔루션을 제공합니다.
+        </p>
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-primary">회사 소개 보기</a>
+          <a href="#contact" class="btn btn-secondary">문의하기</a>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>기능 테스트</h2>
-      <p id="message">버튼을 눌러보세요.</p>
-      <button onclick="changeMessage()">클릭</button>
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span>About Us</span>
+          <h2>회사 소개</h2>
+          <p>고객의 사업 목표를 이해하고 실행 가능한 전략으로 연결합니다.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>전략과 실행을 연결하는 전문 기업</h3>
+            <p>
+              Hanbit Global은 국내외 사업개발, 프로젝트 관리, 시장 조사, 운영 개선 분야에서
+              고객이 실질적인 결과를 만들 수 있도록 지원합니다.
+            </p>
+            <p>
+              단순한 자문에 그치지 않고, 현장 중심의 실행 계획과 데이터 기반 의사결정을 통해
+              프로젝트의 완성도를 높입니다.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <strong>10+</strong>
+            <p>
+              다양한 산업과 프로젝트 경험을 기반으로 고객사의 성장 전략을 지원하고 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <span>Services</span>
+          <h2>사업 분야</h2>
+          <p>기업 운영에 필요한 핵심 서비스를 제공합니다.</p>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>시장 조사</h3>
+            <p>
+              산업 동향, 경쟁사, 정책 변화, 고객 수요를 분석하여 의사결정에 필요한 정보를 제공합니다.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>해외 사업개발</h3>
+            <p>
+              해외 시장 진출 전략, 파트너 발굴, 계약 검토, 리스크 분석을 지원합니다.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🏗️</div>
+            <h3>프로젝트 관리</h3>
+            <p>
+              일정, 비용, 리스크, 이해관계자 관리를 통해 프로젝트 실행력을 높입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats">
+      <div class="container">
+        <div class="section-title">
+          <span>Performance</span>
+          <h2>주요 성과</h2>
+          <p>정량적 성과와 안정적인 수행 경험을 축적하고 있습니다.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <strong>30+</strong>
+            <span>수행 프로젝트</span>
+          </div>
+          <div class="stat-card">
+            <strong>12</strong>
+            <span>협력 국가</span>
+          </div>
+          <div class="stat-card">
+            <strong>95%</strong>
+            <span>고객 만족도</span>
+          </div>
+          <div class="stat-card">
+            <strong>24h</strong>
+            <span>신속 대응 체계</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>문의하기</h2>
+          <p>사업 협력, 프로젝트 검토, 컨설팅 문의를 남겨주세요.</p>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-info">
+            <h3>함께 성장할 파트너를 찾습니다</h3>
+            <p>
+              문의 내용을 남겨주시면 담당자가 검토 후 연락드리겠습니다.
+            </p>
+
+            <ul class="contact-list">
+              <li>이메일: contact@hanbitglobal.com</li>
+              <li>전화: 02-0000-0000</li>
+              <li>주소: 서울특별시 중구</li>
+            </ul>
+          </div>
+
+          <form onsubmit="submitForm(event)">
+            <input type="text" placeholder="성함" required />
+            <input type="email" placeholder="이메일" required />
+            <input type="text" placeholder="회사명" />
+            <textarea placeholder="문의 내용을 입력하세요." required></textarea>
+            <button type="submit" class="submit-button">문의 보내기</button>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
+  <footer>
+    © 2026 Hanbit Global. All rights reserved.
+  </footer>
+
   <script>
-    function changeMessage() {
-      document.getElementById("message").innerText = "버튼이 정상 작동합니다.";
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("active");
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      alert("문의가 접수되었습니다. 실제 이메일 발송 기능은 추후 연결이 필요합니다.");
     }
   </script>
 </body>
