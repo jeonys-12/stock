@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 첫 웹페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #1f2937;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>나의 첫 웹페이지</h1>
+    <p>AI로 만든 GitHub Pages 웹사이트입니다.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>소개</h2>
+      <p>이 페이지는 HTML, CSS, JavaScript로 만든 간단한 웹페이지입니다.</p>
+    </section>
+
+    <section class="card">
+      <h2>기능 테스트</h2>
+      <p id="message">버튼을 눌러보세요.</p>
+      <button onclick="changeMessage()">클릭</button>
+    </section>
+  </main>
+
+  <script>
+    function changeMessage() {
+      document.getElementById("message").innerText = "버튼이 정상 작동합니다.";
+    }
+  </script>
+</body>
+</html>
